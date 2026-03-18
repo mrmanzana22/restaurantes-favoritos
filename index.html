@@ -92,6 +92,18 @@
       padding-bottom: 1.5rem;
       color: var(--color-texto-claro);
     }
+
+    /* Diseño de grilla para las tarjetas */
+    .grilla-restaurantes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+
+    .grilla-restaurantes article {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -102,6 +114,7 @@
   </header>
 
   <main>
+    <section class="grilla-restaurantes">
     <!-- Restaurante 1: Camachos -->
     <article>
       <h2>Camachos</h2>
@@ -141,6 +154,7 @@
       <p><strong>Ubicación:</strong> Varias ciudades de Colombia y Latinoamérica</p>
       <p>Restaurante colombiano reconocido internacionalmente por sus crepes dulces y salados, ensaladas frescas y helados artesanales.</p>
     </article>
+    </section>
   </main>
 
 </body>
