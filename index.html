@@ -158,6 +158,31 @@
     footer p {
       opacity: 0.8;
     }
+
+    /* Etiqueta de categoría en la tarjeta */
+    .etiqueta {
+      display: inline-block;
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      margin: 0 1.5rem 0.8rem;
+    }
+
+    /* Línea separadora decorativa bajo el nombre */
+    article h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background-color: var(--color-acento);
+      margin-top: 0.4rem;
+      border-radius: 2px;
+    }
   </style>
 </head>
 <body>
