@@ -103,6 +103,21 @@
 
     .grilla-restaurantes article {
       margin-bottom: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efecto hover en las tarjetas */
+    .grilla-restaurantes article:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    article img {
+      transition: transform 0.4s ease;
+    }
+
+    article:hover img {
+      transform: scale(1.05);
     }
   </style>
 </head>
