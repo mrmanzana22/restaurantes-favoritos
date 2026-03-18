@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Restaurantes Favoritos</title>
+  <style>
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Variables de color */
+    :root {
+      --color-primario: #c0392b;
+      --color-secundario: #e74c3c;
+      --color-acento: #f39c12;
+      --color-fondo: #fdf6f0;
+      --color-texto: #2c3e50;
+      --color-texto-claro: #7f8c8d;
+      --color-blanco: #ffffff;
+      --sombra: 0 4px 16px rgba(0, 0, 0, 0.12);
+      --radio-borde: 12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    /* Estilos del header */
+    header {
+      background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+      color: var(--color-blanco);
+      text-align: center;
+      padding: 3rem 2rem;
+      box-shadow: var(--sombra);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Contenedor principal */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Estilos de las tarjetas de restaurante */
+    article {
+      background-color: var(--color-blanco);
+      border-radius: var(--radio-borde);
+      box-shadow: var(--sombra);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    article h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primario);
+      padding: 1.2rem 1.5rem 0.5rem;
+    }
+
+    article img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    article p {
+      padding: 0.5rem 1.5rem;
+      color: var(--color-texto);
+    }
+
+    article p:last-child {
+      padding-bottom: 1.5rem;
+      color: var(--color-texto-claro);
+    }
+
+    /* Diseño de grilla para las tarjetas */
+    .grilla-restaurantes {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      padding: 1rem 0;
+    }
+
+    .grilla-restaurantes article {
+      margin-bottom: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efecto hover en las tarjetas */
+    .grilla-restaurantes article:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    article img {
+      transition: transform 0.4s ease;
+    }
+
+    article:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Diseño responsivo */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .grilla-restaurantes {
+        grid-template-columns: 1fr;
+      }
+
+      article img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Estilos del footer */
+    footer {
+      background-color: var(--color-texto);
+      color: var(--color-blanco);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    /* Etiqueta de categoría en la tarjeta */
+    .etiqueta {
+      display: inline-block;
+      background-color: var(--color-acento);
+      color: var(--color-blanco);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      margin: 0 1.5rem 0.8rem;
+    }
+
+    /* Línea separadora decorativa bajo el nombre */
+    article h2::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background-color: var(--color-acento);
+      margin-top: 0.4rem;
+      border-radius: 2px;
+    }
+
+    /* Título de sección */
+    .titulo-seccion {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .titulo-seccion h2 {
+      font-size: 1.8rem;
+      color: var(--color-primario);
+      margin-bottom: 0.5rem;
+    }
+
+    .titulo-seccion p {
+      color: var(--color-texto-claro);
+      font-size: 1rem;
+    }
+
+    /* Contenedor de imagen con overflow oculto para zoom */
+    .contenedor-imagen {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mis Restaurantes Favoritos</h1>
+    <p>Una selección de los mejores lugares para comer en Colombia</p>
+  </header>
+
+  <main>
+    <div class="titulo-seccion">
+      <h2>Nuestros 5 Favoritos</h2>
+      <p>Los restaurantes que nunca fallan cuando quieres comer bien en Colombia</p>
+    </div>
+    <section class="grilla-restaurantes">
+    <!-- Restaurante 1: Camachos -->
+    <article>
+      <h2>Camachos</h2>
+      <span class="etiqueta">Comida Costeña</span>
+      <div class="contenedor-imagen"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600" alt="Restaurante Camachos - comida costeña en Barranquilla"></div>
+      <p><strong>Ubicación:</strong> Barranquilla, Colombia</p>
+      <p>Restaurante tradicional de comida costeña en Barranquilla. Conocido por sus platos típicos como la bandeja de mariscos, arroz con coco y pescado frito.</p>
+    </article>
+
+    <!-- Restaurante 2: El Nido del Tiempo -->
+    <article>
+      <h2>El Nido del Tiempo</h2>
+      <span class="etiqueta">Cocina Fusión</span>
+      <div class="contenedor-imagen"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600" alt="El Nido del Tiempo - cocina fusión colombiana"></div>
+      <p><strong>Ubicación:</strong> Barranquilla, Colombia</p>
+      <p>Restaurante con ambiente acogedor que ofrece cocina fusión colombiana. Especialidades en carnes a la parrilla y platos gourmet con ingredientes locales.</p>
+    </article>
+
+    <!-- Restaurante 3: Barbecue -->
+    <article>
+      <h2>Barbecue</h2>
+      <span class="etiqueta">Parrilla</span>
+      <div class="contenedor-imagen"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600" alt="Barbecue - carnes a la brasa en Barranquilla"></div>
+      <p><strong>Ubicación:</strong> Barranquilla, Colombia</p>
+      <p>Restaurante especializado en carnes a la brasa y parrilladas. Ofrece cortes premium, costillas ahumadas y acompañamientos clásicos.</p>
+    </article>
+
+    <!-- Restaurante 4: La Brasa Roja -->
+    <article>
+      <h2>La Brasa Roja</h2>
+      <span class="etiqueta">Pollo Asado</span>
+      <div class="contenedor-imagen"><img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" alt="La Brasa Roja - pollo asado a la brasa"></div>
+      <p><strong>Ubicación:</strong> Varias sedes en Colombia</p>
+      <p>Cadena de restaurantes colombiana famosa por su pollo asado a la brasa con receta secreta. Acompañamientos de papa, arepa y ensalada.</p>
+    </article>
+
+    <!-- Restaurante 5: Crepes & Waffles -->
+    <article>
+      <h2>Crepes &amp; Waffles</h2>
+      <span class="etiqueta">Crepes &amp; Postres</span>
+      <div class="contenedor-imagen"><img src="https://images.unsplash.com/photo-1519676867240-f03562e64571?w=600" alt="Crepes y Waffles - crepes dulces y salados"></div>
+      <p><strong>Ubicación:</strong> Varias ciudades de Colombia y Latinoamérica</p>
+      <p>Restaurante colombiano reconocido internacionalmente por sus crepes dulces y salados, ensaladas frescas y helados artesanales.</p>
+    </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Mis Restaurantes Favoritos &mdash; Colombia &copy; 2025</p>
+    <p>Una guía gastronómica personal de los mejores sabores del país</p>
+  </footer>
+
+</body>
+</html>
